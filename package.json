@@ -22,13 +22,12 @@
   "lint-staged": {
     "*.{js,jsx}": [
       "yarn prettify",
-      "yarn build:production",
       "git add"
     ]
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn lint-staged"
+      "pre-commit": "yarn lint-staged && yarn build:production && git add dist"
     }
   }
 }
