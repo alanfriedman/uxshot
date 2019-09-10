@@ -5,6 +5,8 @@
   "license": "MIT",
   "repository": "github:alanfriedman/uxshot",
   "scripts": {
+    "build": "npx webpack",
+    "build:production": "NODE_ENV=production yarn build",
     "prettify": "npx prettier --write src/*"
   },
   "devDependencies": {
@@ -18,7 +20,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn prettify && git add src"
+      "pre-commit": "yarn prettify && yarn build:production && git add src"
     }
   }
 }
