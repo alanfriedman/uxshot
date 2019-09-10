@@ -48,6 +48,9 @@ function init({
       stream.getTracks().forEach(track => track.stop());
       stream = null;
       chunks = [];
+      if (mediaType === 'video') {
+        window.onbeforeunload = null;
+      }
     }
   }
 
@@ -160,6 +163,16 @@ function init({
 
     mediaType = type;
     isRecording = true;
+
+    if (mediaType === 'video') {
+      window.onbeforeunload = function(evt) {
+        // Cancel the event
+        evt.preventDefault();
+        // Chrome requires returnValue to be set
+        evt.returnValue = '';
+      };
+    }
+
     try {
       stream = await screenCap();
       const track = stream.getTracks()[0]
