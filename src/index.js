@@ -1,5 +1,6 @@
 const { default: hotkeys } = require('hotkeys-js');
 
+const uxBannerId = 'uxshot-banner';
 let isRecording = false;
 let mediaType;
 
@@ -54,7 +55,7 @@ function init({
   }
 
   function handleCloseBanner() {
-    const banner = document.getElementById('uxshot-banner');
+    const banner = document.getElementById(uxBannerId);
     banner.remove();
   }
 
@@ -101,7 +102,7 @@ function init({
     Object.assign(copyButton.style, {});
 
     const banner = document.createElement('div');
-    banner.id = 'uxshot-banner';
+    banner.id = uxBannerId;
     Object.assign(banner.style, {
       position: 'fixed',
       top: '10px',
@@ -157,7 +158,7 @@ function init({
   }
 
   async function startCapture(type) {
-    const banner = document.getElementById('uxshot-banner');
+    const banner = document.getElementById(uxBannerId);
     if (banner) banner.remove();
 
     mediaType = type;
