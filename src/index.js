@@ -5,7 +5,8 @@ let mediaType;
 
 function init({
   videoKey = 'ctrl+r',
-  screenshotKey = 'ctrl+s'
+  screenshotKey = 'ctrl+s',
+  description: descriptionCallback
 } = {}) {
 
   hotkeys(videoKey, function(event, handler) {
@@ -60,6 +61,12 @@ function init({
     let formData = new FormData();
     formData.append('mediaType', mediaType);
     formData.append('media', data);
+
+    let description;
+    if (descriptionCallback) {
+      description = await descriptionCallback();
+      formData.append('description', description);
+    }
 
     // const res = await fetch("http://localhost:3000/upload",
     const res = await fetch("https://uxshot.com/upload",

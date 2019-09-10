@@ -3,7 +3,16 @@
   <head>
     <title></title>
     <script type="text/javascript" src="./dist/uxshot.js"></script>
-    <script>uxshot()</script>
+    <script>uxshot({
+      description: () => {
+        const message = window.prompt('Enter a message here');
+        return `
+          Message: ${message}
+          Timestamp: ${Date.now()}
+          User Agent: ${window.navigator.userAgent}
+        `
+      }
+    })</script>
   </head>
   <body>
     <main>
