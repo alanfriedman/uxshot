@@ -1,6 +1,6 @@
 {
   "name": "uxshot",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "main": "dist/uxshot.js",
   "license": "MIT",
   "devDependencies": {
