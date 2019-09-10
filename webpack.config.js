@@ -1,4 +1,4 @@
-const path = require('path')
+const path = require('path');
 
 const mode = process.env.NODE_ENV || 'development';
 
@@ -10,7 +10,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     library: 'uxshot',
     libraryTarget: 'umd',
-    globalObject: 'this'
+    globalObject: 'this',
   },
 
   externals: {

@@ -7,10 +7,11 @@
   "scripts": {
     "build": "npx webpack",
     "build:production": "NODE_ENV=production yarn build",
-    "prettify": "npx prettier --write src/*"
+    "prettify": "npx prettier --write"
   },
   "devDependencies": {
     "husky": "^3.0.5",
+    "lint-staged": "^9.2.5",
     "prettier": "^1.18.2",
     "webpack": "^4.39.3",
     "webpack-cli": "^3.3.7"
@@ -18,9 +19,16 @@
   "dependencies": {
     "hotkeys-js": "^3.7.1"
   },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "yarn prettify",
+      "yarn build:production",
+      "git add"
+    ]
+  },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn prettify && yarn build:production && git add src"
+      "pre-commit": "yarn lint-staged"
     }
   }
 }
