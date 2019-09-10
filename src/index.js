@@ -49,7 +49,7 @@ function init({
       stream = null;
       chunks = [];
       if (mediaType === 'video') {
-        window.onbeforeunload = null;
+        // window.onbeforeunload = null;
       }
     }
   }
@@ -165,12 +165,12 @@ function init({
     isRecording = true;
 
     if (mediaType === 'video') {
-      window.onbeforeunload = function(evt) {
-        // Cancel the event
-        evt.preventDefault();
-        // Chrome requires returnValue to be set
-        evt.returnValue = '';
-      };
+      // window.onbeforeunload = function(evt) {
+      //   // Cancel the event
+      //   evt.preventDefault();
+      //   // Chrome requires returnValue to be set
+      //   evt.returnValue = '';
+      // };
     }
 
     try {
