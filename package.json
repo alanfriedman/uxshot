@@ -1,0 +1,13 @@
+{
+  "name": "uxshot",
+  "version": "0.0.13",
+  "main": "dist/uxshot.js",
+  "license": "MIT",
+  "devDependencies": {
+    "webpack": "^4.39.3",
+    "webpack-cli": "^3.3.7"
+  },
+  "dependencies": {
+    "hotkeys-js": "^3.7.1"
+  }
+}
