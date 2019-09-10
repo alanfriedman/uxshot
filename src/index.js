@@ -47,6 +47,7 @@ function init({
       recorder = null;
       stream.getTracks().forEach(track => track.stop());
       stream = null;
+      chunks = [];
     }
   }
 
