@@ -169,7 +169,7 @@ function init({
       }
       video.srcObject = stream;
 
-      const mimeType = 'video/webm';
+      const mimeType = 'video/webm; codecs=vp8';
        recorder = new MediaRecorder(stream, {mimeType});
        recorder.ondataavailable = function(event) {
          if (typeof event.data === 'undefined') return;
