@@ -221,12 +221,12 @@ function init({
 
   function getVideoImage(secs) {
     video.currentTime = secs;
-    var canvas = document.createElement('canvas');
+    const canvas = document.createElement('canvas');
     canvas.height = video.videoHeight;
     canvas.width = video.videoWidth;
-    var ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext('2d');
     ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-    var img = new Image();
+    const img = new Image();
     img.src = canvas.toDataURL();
     return img;
   }

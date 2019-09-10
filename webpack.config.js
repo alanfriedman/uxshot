@@ -1,16 +1,19 @@
-const webpack = require('webpack');
-const path = require('path')
+const path = require('path');
 
-const production = process.env.NODE_ENV === 'production' || false;
+const mode = process.env.NODE_ENV || 'development';
 
 module.exports = {
   entry: './src/index.js',
-  mode: 'production',
+  mode: mode,
   output: {
     filename: 'uxshot.js',
     path: path.resolve(__dirname, 'dist'),
     library: 'uxshot',
     libraryTarget: 'umd',
-    globalObject: 'this'
+    globalObject: 'this',
+  },
+
+  externals: {
+    'hotkeys-js': 'hotkeys-js',
   },
 };
