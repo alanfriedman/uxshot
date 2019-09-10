@@ -3,6 +3,7 @@
   "version": "0.0.19",
   "main": "dist/uxshot.js",
   "license": "MIT",
+  "repository": "github:alanfriedman/uxshot",
   "devDependencies": {
     "webpack": "^4.39.3",
     "webpack-cli": "^3.3.7"
