@@ -157,7 +157,7 @@ function init({
       const track = stream.getTracks()[0]
       const settings = track.getSettings && track.getSettings()
       if (!settings.displaySurface || settings.displaySurface === 'monitor') {
-        window.open(window.location.href)
+        // window.open(window.location.href)
       }
       video.srcObject = stream;
 
