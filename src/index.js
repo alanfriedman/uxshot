@@ -1,5 +1,6 @@
 const { default: hotkeys } = require('hotkeys-js');
 
+const uxBannerId = 'uxshot-banner';
 let isRecording = false;
 let mediaType;
 
@@ -34,10 +35,6 @@ function init({
   const video = document.createElement('video');
   video.setAttribute('autoplay', true);
 
-  document.addEventListener('DOMContentLoaded', () => {
-    // document.body.appendChild(video)
-  });
-
   function stopCapture(evt) {
     if (!isRecording) return;
     isRecording = false;
@@ -48,13 +45,13 @@ function init({
       stream = null;
       chunks = [];
       if (mediaType === 'video') {
-        // window.onbeforeunload = null;
+        // TODO something if we stop the video
       }
     }
   }
 
   function handleCloseBanner() {
-    const banner = document.getElementById('uxshot-banner');
+    const banner = document.getElementById(uxBannerId);
     banner.remove();
   }
 
@@ -101,7 +98,7 @@ function init({
     Object.assign(copyButton.style, {});
 
     const banner = document.createElement('div');
-    banner.id = 'uxshot-banner';
+    banner.id = uxBannerId;
     Object.assign(banner.style, {
       position: 'fixed',
       top: '10px',
@@ -135,7 +132,6 @@ function init({
 
     banner.appendChild(input);
     banner.appendChild(copyButton);
-    // banner.appendChild(closeButton);
 
     document.body.appendChild(banner);
   }
@@ -157,19 +153,14 @@ function init({
   }
 
   async function startCapture(type) {
-    const banner = document.getElementById('uxshot-banner');
+    const banner = document.getElementById(uxBannerId);
     if (banner) banner.remove();
 
     mediaType = type;
     isRecording = true;
 
     if (mediaType === 'video') {
-      // window.onbeforeunload = function(evt) {
-      //   // Cancel the event
-      //   evt.preventDefault();
-      //   // Chrome requires returnValue to be set
-      //   evt.returnValue = '';
-      // };
+      // TODO on unload page do something
     }
 
     try {
@@ -196,7 +187,7 @@ function init({
       });
 
       recorder.addEventListener('start', () => {
-        // upload();
+        // TODO upload the video somewhere
       });
       recorder.start();
 
@@ -207,12 +198,10 @@ function init({
       });
 
       stream.addEventListener('active', e => {
-        // callback();
-        // console.log('active');
+        // TODO
       });
       stream.addEventListener('addtrack', e => {
-        // console.log('add');
-        // callback();
+        // TODO
       });
     } catch (err) {
       console.error(err);
