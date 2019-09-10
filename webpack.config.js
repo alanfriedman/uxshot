@@ -14,6 +14,11 @@ module.exports = {
   },
 
   externals: {
-    'hotkeys-js': 'hotkeys-js',
+    'hotkeys-js': {
+      commonjs: 'hotkeys-js',
+      commonjs2: 'hotkeys-js',
+      amd: 'hotkeys-js',
+      root: 'hotkeys',
+    },
   },
 };
