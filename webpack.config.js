@@ -26,6 +26,10 @@ module.exports = {
                 {
                   useBuiltIns: 'usage',
                   corejs: 2,
+                  targets: {
+                    chrome: '49',
+                    firefox: '40',
+                  },
                 },
               ],
             ],
