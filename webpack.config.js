@@ -6,7 +6,7 @@ module.exports = {
   entry: './src/index.js',
   mode: mode,
   output: {
-    filename: 'uxshot.js',
+    filename: mode === 'production' ? 'uxshot.min.js' : 'uxshot.js',
     path: path.resolve(__dirname, 'dist'),
     library: 'uxshot',
     libraryTarget: 'umd',
