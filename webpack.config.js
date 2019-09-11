@@ -6,11 +6,34 @@ module.exports = {
   entry: './src/index.js',
   mode: mode,
   output: {
-    filename: 'uxshot.js',
+    filename: mode === 'production' ? 'uxshot.min.js' : 'uxshot.js',
     path: path.resolve(__dirname, 'dist'),
     library: 'uxshot',
     libraryTarget: 'umd',
-    globalObject: 'this',
+  },
+
+  module: {
+    rules: [
+      {
+        test: /\.m?js$/,
+        exclude: /(node_modules)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            plugins: ['@babel/transform-runtime'],
+            presets: [
+              [
+                '@babel/preset-env',
+                {
+                  useBuiltIns: 'entry',
+                  corejs: 2,
+                },
+              ],
+            ],
+          },
+        },
+      },
+    ],
   },
 
   externals: {
