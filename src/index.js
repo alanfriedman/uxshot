@@ -1,10 +1,10 @@
-import hotkeys from 'hotkeys-js';
+const hotkeys = require('hotkeys-js');
 
 const uxBannerId = 'uxshot-banner';
 let isRecording = false;
 let mediaType;
 
-export function init({
+function init({
   videoKey = 'ctrl+r',
   screenshotKey = 'ctrl+s',
   description: descriptionCallback,
@@ -221,4 +221,4 @@ export function init({
   }
 }
 
-export default init;
+module.exports = init;
