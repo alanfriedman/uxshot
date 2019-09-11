@@ -2,7 +2,6 @@
   "name": "uxshot",
   "version": "0.0.21",
   "main": "dist/uxshot.js",
-  "module": "src/index.js",
   "license": "MIT",
   "repository": "github:alanfriedman/uxshot",
   "scripts": {
