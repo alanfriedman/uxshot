@@ -3,7 +3,7 @@ const path = require('path');
 const mode = process.env.NODE_ENV || 'development';
 
 module.exports = {
-  entry: ['./src/index.js'],
+  entry: './src/index.js',
   mode: mode,
   output: {
     filename: 'uxshot.js',
