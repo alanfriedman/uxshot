@@ -20,16 +20,14 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
+            plugins: ['@babel/transform-runtime'],
             presets: [
               [
                 '@babel/preset-env',
                 {
-                  useBuiltIns: 'usage',
+                  useBuiltIns: 'entry',
                   corejs: 2,
-                  targets: {
-                    chrome: '49',
-                    firefox: '40',
-                  },
+                  targets: '> 0.25%, not dead',
                 },
               ],
             ],
