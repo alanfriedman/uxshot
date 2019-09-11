@@ -27,7 +27,6 @@ module.exports = {
                 {
                   useBuiltIns: 'entry',
                   corejs: 2,
-                  targets: '> 0.25%, not dead',
                 },
               ],
             ],

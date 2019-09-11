@@ -26,6 +26,7 @@
   "dependencies": {
     "hotkeys-js": "^3.7.1"
   },
+  "browserslist": "> 0.25%, not dead",
   "lint-staged": {
     "*.{js,jsx}": [
       "yarn prettify",
