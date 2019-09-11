@@ -220,3 +220,5 @@ export function init({
     return img;
   }
 }
+
+export default init;
