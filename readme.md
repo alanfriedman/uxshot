@@ -25,7 +25,7 @@ You need to include hotkeys-js and ux shot:
 <script src="https://unpkg.com/uxshot"></script>
 
 <script>
-  window.uxshot({
+  window.uxshot.init({
     screenshotKey: 'ctrl+s',
     videoKey: 'ctrl+r'
   });

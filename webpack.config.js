@@ -3,14 +3,28 @@ const path = require('path');
 const mode = process.env.NODE_ENV || 'development';
 
 module.exports = {
-  entry: './src/index.js',
+  entry: ['babel-polyfill', './src/index.js'],
   mode: mode,
   output: {
     filename: 'uxshot.js',
     path: path.resolve(__dirname, 'dist'),
     library: 'uxshot',
     libraryTarget: 'umd',
-    globalObject: 'this',
+  },
+
+  module: {
+    rules: [
+      {
+        test: /\.m?js$/,
+        exclude: /(node_modules)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env'],
+          },
+        },
+      },
+    ],
   },
 
   externals: {
