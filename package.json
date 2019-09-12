@@ -5,6 +5,7 @@
   "license": "MIT",
   "repository": "github:alanfriedman/uxshot",
   "scripts": {
+    "dev": "npx webpack -w",
     "build": "npx webpack",
     "build:production": "NODE_ENV=production yarn build",
     "prettify": "npx prettier --write"

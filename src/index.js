@@ -3,12 +3,37 @@ import hotkeys from 'hotkeys-js';
 const uxBannerId = 'uxshot-banner';
 let isRecording = false;
 let mediaType;
+const jsErrors = [];
+
+function captureJsErrors() {
+  window.addEventListener('error', event => {
+    jsErrors.push({
+      message: event.message,
+      error: {
+        message: event.error.message,
+        stack: event.error.stack,
+      },
+    });
+  });
+}
+
+function getDefaultDescriptionData() {
+  return {
+    userAgent: window.navigator.userAgent,
+    windowSize: `${window.innerWidth}x${window.innerHeight}`,
+    language: navigator.language,
+    url: window.location.href,
+  };
+}
 
 export function init({
   videoKey = 'ctrl+r',
   screenshotKey = 'ctrl+s',
   description: descriptionCallback,
+  serverUrl = 'https://uxshot.com',
 } = {}) {
+  captureJsErrors();
+
   hotkeys(videoKey, function(event, handler) {
     if (isRecording) {
       stopCapture();
@@ -61,14 +86,33 @@ export function init({
     formData.append('mediaType', mediaType);
     formData.append('media', data);
 
-    let description;
+    const defaultDescriptionData = getDefaultDescriptionData();
+    const {
+      userAgent,
+      windowSize,
+      url: pageUrl,
+      language,
+    } = defaultDescriptionData;
+    let description = `
+      Time: ${new Date()}
+      URL: ${pageUrl}
+      User agent: ${userAgent}
+      Window size: ${windowSize}
+      Language: ${language}
+    `;
+
     if (descriptionCallback) {
-      description = await descriptionCallback();
-      formData.append('description', description);
+      description = await descriptionCallback(
+        defaultDescriptionData,
+        description
+      );
     }
 
-    // const res = await fetch("http://localhost:3000/upload",
-    const res = await fetch('https://uxshot.com/upload', {
+    formData.append('description', description);
+
+    formData.append('errors', JSON.stringify(jsErrors));
+
+    const res = await fetch(`${serverUrl}/upload`, {
       body: formData,
       method: 'post',
     });
