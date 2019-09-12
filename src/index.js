@@ -21,7 +21,7 @@ function getDefaultDescriptionData() {
   return {
     userAgent: window.navigator.userAgent,
     windowSize: `${window.innerWidth}x${window.innerHeight}`,
-    language: navigator.language,
+    language: window.navigator.language,
     url: window.location.href,
   };
 }
