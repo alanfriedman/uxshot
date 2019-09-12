@@ -1,10 +1,11 @@
 {
   "name": "uxshot",
-  "version": "0.0.21",
+  "version": "0.0.22",
   "main": "dist/uxshot.js",
   "license": "MIT",
   "repository": "github:alanfriedman/uxshot",
   "scripts": {
+    "dev": "npx webpack -w",
     "build": "npx webpack",
     "build:production": "NODE_ENV=production yarn build",
     "prettify": "npx prettier --write"

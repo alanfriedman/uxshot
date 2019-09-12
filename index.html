@@ -5,12 +5,13 @@
     <script src="https://unpkg.com/hotkeys-js/dist/hotkeys.min.js"></script>
     <script type="text/javascript" src="./dist/uxshot.js"></script>
     <script>uxshot.init({
-      description: () => {
+      serverUrl: 'http://localhost:3000',
+      description: (defaultData, defaultMessage) => {
         const message = window.prompt('Enter a message here');
         return `
+          ${defaultMessage}
           Message: ${message}
           Timestamp: ${Date.now()}
-          User Agent: ${window.navigator.userAgent}
         `
       }
     })</script>
